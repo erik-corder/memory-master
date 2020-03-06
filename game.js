@@ -17,6 +17,10 @@ var gameOptions = {
 
     raw: 0,
 
+    move: 0,
+
+    score: 0,
+
     // amount of bars each wall is divided in
     bars: 4,
 
@@ -67,7 +71,7 @@ window.onload = function () {
         },
         url: '',
         pixelArt: true,
-        scene: [Boot, Preloader, SetGrid, PlayGame, Score, , Menu, Play]
+        scene: [Boot, Preloader, SetGrid, PlayGame, Score, , Menu, Play, About]
     }
 
     // game creation

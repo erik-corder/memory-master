@@ -22,15 +22,21 @@ class Play extends Phaser.Scene {
         this.load.image("c9", "assets/img/cards/10.png");
         this.load.image("c10", "assets/img/cards/11.png");
         this.load.image("c11", "assets/img/cards/12.png");
+        this.load.image("c12", "assets/img/cards/13.png");
+        this.load.image("c13", "assets/img/cards/14.png");
+        this.load.image("c14", "assets/img/cards/15.png");
+        this.load.image("c15", "assets/img/cards/16.png");
 
         this.load.image("card", "assets/img/Default-Card.png");
+        this.load.image("score", "assets/img/Score.png");
+        this.load.image("move", "assets/img/Moves.png");
 
-        this.load.image("ball", "assets/img/ball.png");
         this.load.image("coin", "assets/img/coin.png");
 
         this.load.image("fireball", "assets/img/fireball.png");
 
-        // this.load.spritesheet('congrate', 'assets/spritesheet/congrate.png', { frameWidth: 345, frameHight: 180 });
+        this.load.spritesheet('congrate', 'assets/spritesheet/firework4.png', { frameWidth: 500, frameHight: 500 });
+        this.load.spritesheet('congrate2', 'assets/spritesheet/firework3.png', { frameWidth: 500, frameHight: 500 });
 
     }
 
@@ -43,10 +49,18 @@ class Play extends Phaser.Scene {
 
         // this.image = this.add.image(game.config.width / 2, game.config.height / 2, 'fireball');
 
-        var move = 0;
+        this.move = gameOptions.move;
+        score = gameOptions.score;
 
-        this.moveText = this.add.text(36, 16, 'MOVE: ' + move, { fontSize: '60px', fill: '#FFF' });
-        this.scoreText = this.add.text(400, 16, 'SCORE: ' + score, { fontSize: '60px', fill: '#FFF' });
+        this.movepic = this.add.image(130, 50, 'move');
+        this.movepic.displayHeight = 69;
+        this.movepic.displayWidth = 195;
+        this.moveText = this.add.text(170, 26, this.move, { fontSize: '45px', fill: '#FFF' });
+
+        this.scorepic = this.add.image(600, 50, 'score');
+        this.scorepic.displayHeight = 69;
+        this.scorepic.displayWidth = 195;
+        this.scoreText = this.add.text(650, 26, score, { fontSize: '45px', fill: '#FFF' });
 
         this.raws = gameOptions.raw;
         this.columns = gameOptions.col;
@@ -66,6 +80,8 @@ class Play extends Phaser.Scene {
         this.compaire_pic = new Array();
         this.compaire_pic_num = new Array();
 
+
+
         this.createGrid();
         this.assignCards();
         this.changeCard();
@@ -73,36 +89,48 @@ class Play extends Phaser.Scene {
     }
 
     _setCardsSizeCompatible() {
-        if (this.raws == 3 && this.columns == 4) {
+        if (this.raws == 2 && this.columns == 4) {
             this.card_dis_width = 100;
             this.card_dis_height = 100;
             this.cardWidth = game.config.width / 10;
             this.cardSpacing = game.config.width / 10;
+            this.pic_width = 90;
+            this.pic_height = 90;
         } else if (this.raws == 4 && this.columns == 4) {
             this.card_dis_width = 100;
             this.card_dis_height = 100;
             this.cardWidth = game.config.width / 10;
             this.cardSpacing = game.config.width / 12;
+            this.pic_width = 90;
+            this.pic_height = 90;
         } else if (this.raws == 4 && this.columns == 5) {
             this.card_dis_width = 100;
             this.card_dis_height = 100;
             this.cardWidth = game.config.width / 10;
             this.cardSpacing = game.config.width / 12;
+            this.pic_width = 90;
+            this.pic_height = 90;
         } else if (this.raws == 4 && this.columns == 6) {
             this.card_dis_width = 90;
             this.card_dis_height = 90;
             this.cardWidth = game.config.width / 17;
             this.cardSpacing = game.config.width / 10;
+            this.pic_width = 80;
+            this.pic_height = 80;
         } else if (this.raws == 4 && this.columns == 7) {
             this.card_dis_width = 85;
             this.card_dis_height = 85;
             this.cardWidth = game.config.width / 15;
             this.cardSpacing = game.config.width / 15;
+            this.pic_width = 75;
+            this.pic_height = 75;
         } else if (this.raws == 4 && this.columns == 8) {
             this.card_dis_width = 80;
             this.card_dis_height = 80;
             this.cardWidth = game.config.width / 18;
             this.cardSpacing = game.config.width / 16;
+            this.pic_width = 70;
+            this.pic_height = 70;
         }
     }
 
@@ -145,7 +173,7 @@ class Play extends Phaser.Scene {
         this.input.keyboard.on('keyup', function (e) {
             if (e.key == "ArrowRight") {
                 if (this.cards[i] != null) {
-                    this.cards[i].clearTint(); 
+                    this.cards[i].clearTint();
                     this.cards[i].selected = 'unselected';
                 }
                 i++;
@@ -160,7 +188,7 @@ class Play extends Phaser.Scene {
                     this.cards[i].selected = 'selected';
                 }
                 if (i == 1) {
-                    this.cards[this.cards.length - 1].clearTint(); 
+                    this.cards[this.cards.length - 1].clearTint();
                     this.cards[this.cards.length - 1].selected = 'unselected';
                 }
             }
@@ -168,14 +196,14 @@ class Play extends Phaser.Scene {
             if (e.key == "ArrowLeft") {
                 if (i == 0) {
                     i = this.cards.length;
-                    this.cards[0].clearTint(); 
+                    this.cards[0].clearTint();
                     this.cards[0].selected = 'unselected';
                 }
                 i--;
                 this.cards[i].setTint(0x1abc9c);
                 this.cards[i].selected = 'selected';
                 if (this.cards[i + 1] != null) {
-                    this.cards[i + 1].clearTint(); 
+                    this.cards[i + 1].clearTint();
                     this.cards[i + 1].selected = 'unselected';
                 }
             }
@@ -188,7 +216,7 @@ class Play extends Phaser.Scene {
                 }
 
                 if (this.cards[i - this.columns] != null) {
-                    this.cards[i - this.columns].clearTint(); 
+                    this.cards[i - this.columns].clearTint();
                     this.cards[i - this.columns].selected = 'unselected';
                 }
             }
@@ -220,8 +248,8 @@ class Play extends Phaser.Scene {
                         var y = this.cards[i].y
                         var x = this.cards[i].x
                         var pic = this.add.sprite(x, y, "c" + this.cards[i].cardValue);
-                        pic.displayWidth = 90;
-                        pic.displayHeight = 90;
+                        pic.displayWidth = this.pic_width;
+                        pic.displayHeight = this.pic_height;
                         this.compaire_pic_num.push(this.cards[i].cardValue);
                         this.compaire_pic.push(pic);
                         if (this.compaire_pic_num.length == 2 || this.compaire_pic.length == 2) {
@@ -259,33 +287,88 @@ class Play extends Phaser.Scene {
 
     _createEmitter(completed) {
         if (completed == (this.numValues * 2)) {
-            var particles = this.add.particles('fireball');
-            var emitter = particles.createEmitter();
-            emitter.setPosition(400, 300);
-            emitter.setSpeed(200);
-            emitter.setBlendMode(Phaser.BlendModes.ADD);
+            this.congrate = this.add.sprite(game.config.width / 2, game.config.height / 2, 'congrate');
 
-            // this.congrate = this.matter.add.sprite(160, 150, 'congrate');
-            //coinframe
-            // this.anims.create({
-            //     key: 'coinRotate',
-            //     repeat: -1,
-            //     frameRate: 7,
-            //     frames: this.anims.generateFrameNames('congrate', { start: 1, end: 4 })
-            // });
+            //enimy
+            this.anims.create({
+                key: 'cangradulation',
+                repeat: -1,
+                frameRate: 20,
+                frames: this.anims.generateFrameNames('congrate', { start: 1, end: 45 })
+            });
 
-            // this.congrate.play('coinRotate');
+            this.congrate.play('cangradulation');
+            // this.enimyR.displayWidth = 100;
+            // this.enimyR.displayHeight = 100;
+
+            this.congrate2 = this.add.sprite(game.config.width / 3, game.config.height / 1.5, 'congrate2');
+
+            //enimy
+            this.anims.create({
+                key: 'cangradulation2',
+                repeat: -1,
+                frameRate: 20,
+                frames: this.anims.generateFrameNames('congrate2', { start: 1, end: 45 })
+            });
+
+            this.congrate2.play('cangradulation2');
+            // this.enimyR.displayWidth = 100;
+            // this.enimyR.displayHeight = 100;
         }
     }
 
     moveCollect() {
         this.move += 1;
-        this.moveText.setText('MOVE: ' + this.move);
+        this.moveText.setText(this.move);
     }
 
     scoreCollect() {
-        score += 1;
-        this.scoreText.setText('SCORE: ' + score);
+        score += 10;
+        this.avgScore = (score / this.move).toFixed(0);
+        this.scoreText.setText(this.avgScore);
+        console.log(this.avgScore)
+    }
+
+    _setScoreLocalStorage(avgScore) {
+        if (this.raws == 2 && this.columns == 4) {
+            this.tinyScore = avgScore;
+            if (localStorage.getItem("tinyScore") === null || localStorage.getItem('tinyScore') > this._tinyScore) {
+                localStorage.setItem('tinyScore', this.tinyScore);
+            }
+            avgScore = 0;
+        } else if (this.raws == 4 && this.columns == 4) {
+            this.smallScore = avgScore;
+            if (localStorage.getItem("smallScore") === null || localStorage.getItem('smallScore') > this.smallScore) {
+                localStorage.setItem('smallScore', this.smallScore);
+            }
+            avgScore = 0;
+        } else if (this.raws == 4 && this.columns == 5) {
+            this.mediumScore = avgScore;
+            if (localStorage.getItem("mediumScore") === null || localStorage.getItem('mediumScore') > this.mediumScore) {
+                localStorage.setItem('mediumScore', this.mediumScore);
+            }
+            avgScore = 0;
+        } else if (this.raws == 4 && this.columns == 6) {
+            this.medium2Score = avgScore;
+            if (localStorage.getItem("medium2Score") === null || localStorage.getItem('medium2Score') > this.medium2Score) {
+                localStorage.setItem('medium2Score', this.medium2Score);
+            }
+            avgScore = 0;
+        } else if (this.raws == 4 && this.columns == 7) {
+            this.largeScore = avgScore;
+            if (localStorage.getItem("largeScore") === null || localStorage.getItem('largeScore') > this.largeScore) {
+                localStorage.setItem('largeScore', this.largeScore);
+            }
+            avgScore = 0;
+        } else if (this.raws == 4 && this.columns == 8) {
+            this.hugeScore = avgScore;
+            if (localStorage.getItem("hugeScore") === null || localStorage.getItem('hugeScore') > this.hugeScore) {
+                localStorage.setItem('hugeScore', this.hugeScore);
+            }
+            avgScore = 0;
+        } else {
+            console.log('error');
+        }
     }
 
     // method to be called at each frame

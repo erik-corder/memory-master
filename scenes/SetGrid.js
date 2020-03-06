@@ -59,9 +59,14 @@ class SetGrid extends Phaser.Scene {
         }, this);
 
         this.input.keyboard.on('keyup', function (e) {
+            console.log(e);
             if (e.key == "Enter") {
                 //console.log("soft left key");
                 this.callMenuButton();
+            }
+            if (e.key == "Backspace") {
+                //console.log("soft left key");
+                this.scene.start('Menu');
             }
         }, this);
 
@@ -97,7 +102,7 @@ class SetGrid extends Phaser.Scene {
         this.btn_huge.displayWidth = game.config.width / 2.8;
 
 
-        this.about = this.add.text(game.config.width - game.config.width * 10 / 100, game.config.height - game.config.height * 5 / 100, "About").setFontSize(50).setFontFamily("Arial").setOrigin(0.5);
+        this.back = this.add.text(game.config.width - game.config.width * 10 / 100, game.config.height - game.config.height * 5 / 100, "Back").setFontSize(50).setFontFamily("Arial").setOrigin(0.5);
 
 
         // this.input.keyboard.on('keyup_ENTER', function (event) {
@@ -313,7 +318,7 @@ class SetGrid extends Phaser.Scene {
                 //console.log("Play SELECT");
                 console.log("aaaaa")
                 gameOptions.col = 4;
-                gameOptions.raw = 3;
+                gameOptions.raw = 2;
                 this.scene.start('Play');
                 break;
             case "small":
