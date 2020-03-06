@@ -318,7 +318,7 @@ class SetGrid extends Phaser.Scene {
                 //console.log("Play SELECT");
                 console.log("aaaaa")
                 gameOptions.col = 4;
-                gameOptions.raw = 2;
+                gameOptions.raw = 3;
                 this.scene.start('Play');
                 break;
             case "small":

@@ -89,7 +89,7 @@ class Play extends Phaser.Scene {
     }
 
     _setCardsSizeCompatible() {
-        if (this.raws == 2 && this.columns == 4) {
+        if (this.raws == 3 && this.columns == 4) {
             this.card_dis_width = 100;
             this.card_dis_height = 100;
             this.cardWidth = game.config.width / 10;
@@ -330,7 +330,7 @@ class Play extends Phaser.Scene {
     }
 
     _setScoreLocalStorage(avgScore) {
-        if (this.raws == 2 && this.columns == 4) {
+        if (this.raws == 3 && this.columns == 4) {
             this.tinyScore = avgScore;
             if (localStorage.getItem("tinyScore") === null || localStorage.getItem('tinyScore') > this._tinyScore) {
                 localStorage.setItem('tinyScore', this.tinyScore);
