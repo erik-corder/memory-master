@@ -8,7 +8,7 @@ class Preloader extends Phaser.Scene{
     preload () {
   
       // load assets needed in our game
-      this.load.image('splash', 'assets/img/splash.png');
+      this.load.image('splash', 'assets/img/Splash.png');
     }
   
     create(){
