@@ -24,6 +24,7 @@ var gameOptions = {
     // amount of bars each wall is divided in
     bars: 4,
 
+
     // array with the colors to pick from
     barColors: [0x1abc9c, 0x2980b9, 0x9b59b6, 0xf1c40f, 0xc0392b, 0xecf0f1]
 }
@@ -34,8 +35,47 @@ const RIGHT = 1;
 var score = 0;
 var scoreText;
 
+
+
 // function to be executed when the windows has loaded
 window.onload = function () {
+
+    // request an ad when the DOM is loaded
+    getKaiAd({
+        publisher: 'ca24f2d0-de89-4c1a-80c4-51e14d317000',
+        app: 'Pelota',
+        slot: 'Pelota',
+
+        h: 264,
+        w: 240,
+
+        // Max supported size is 240x264
+        // container is required for responsive ads
+        container: document.getElementById('ad-container'),
+        onerror: err => console.error('Custom catch:', err),
+        onready: ad => {
+
+            // Ad is ready to be displayed
+            // calling 'display' will display the ad
+            ad.call('display', {
+
+                // In KaiOS the app developer is responsible
+                // for user navigation, and can provide
+                // navigational className and/or a tabindex
+                tabindex: 0,
+
+                // if the application is using
+                // a classname to navigate
+                // this classname will be applied
+                // to the container
+                navClass: 'items',
+
+                // display style will be applied
+                // to the container block or inline-block
+                display: 'block',
+            })
+        }
+    });
 
     // object containing configuration options
     var gameConfig = {
@@ -50,7 +90,7 @@ window.onload = function () {
         height: 800,
 
         // background color (black)
-        backgroundColor: 0x60256B,
+        // backgroundColor: 0x60256B,
 
         // scene to play
         // scene: playGame,
@@ -71,7 +111,7 @@ window.onload = function () {
         },
         url: '',
         pixelArt: true,
-        scene: [Boot, Preloader, SetGrid, PlayGame, Score, , Menu, Play, About]
+        scene: [Boot, Preloader, SetGrid, PlayGame, Score, , Menu, Play, About, GameOver, HelpScene]
     }
 
     // game creation
