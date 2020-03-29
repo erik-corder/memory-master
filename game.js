@@ -41,41 +41,41 @@ var scoreText;
 window.onload = function () {
 
     // request an ad when the DOM is loaded
-    getKaiAd({
-        publisher: 'ca24f2d0-de89-4c1a-80c4-51e14d317000',
-        app: 'Pelota',
-        slot: 'Pelota',
+    // getKaiAd({
+    //     publisher: 'ca24f2d0-de89-4c1a-80c4-51e14d317000',
+    //     app: 'Pelota',
+    //     slot: 'Pelota',
 
-        h: 264,
-        w: 240,
+    //     h: 264,
+    //     w: 240,
 
-        // Max supported size is 240x264
-        // container is required for responsive ads
-        container: document.getElementById('ad-container'),
-        onerror: err => console.error('Custom catch:', err),
-        onready: ad => {
+    //     // Max supported size is 240x264
+    //     // container is required for responsive ads
+    //     container: document.getElementById('ad-container'),
+    //     onerror: err => console.error('Custom catch:', err),
+    //     onready: ad => {
 
-            // Ad is ready to be displayed
-            // calling 'display' will display the ad
-            ad.call('display', {
+    //         // Ad is ready to be displayed
+    //         // calling 'display' will display the ad
+    //         ad.call('display', {
 
-                // In KaiOS the app developer is responsible
-                // for user navigation, and can provide
-                // navigational className and/or a tabindex
-                tabindex: 0,
+    //             // In KaiOS the app developer is responsible
+    //             // for user navigation, and can provide
+    //             // navigational className and/or a tabindex
+    //             tabindex: 0,
 
-                // if the application is using
-                // a classname to navigate
-                // this classname will be applied
-                // to the container
-                navClass: 'items',
+    //             // if the application is using
+    //             // a classname to navigate
+    //             // this classname will be applied
+    //             // to the container
+    //             navClass: 'items',
 
-                // display style will be applied
-                // to the container block or inline-block
-                display: 'block',
-            })
-        }
-    });
+    //             // display style will be applied
+    //             // to the container block or inline-block
+    //             display: 'block',
+    //         })
+    //     }
+    // });
 
     // object containing configuration options
     var gameConfig = {
@@ -84,10 +84,10 @@ window.onload = function () {
         type: Phaser.AUTO,
 
         // width of the game, in pixels
-        width: 750,
+        width: 480,
 
         // height of the game, in pixels
-        height: 800,
+        height: 640,
 
         // background color (black)
         // backgroundColor: 0x60256B,
@@ -111,7 +111,7 @@ window.onload = function () {
         },
         url: '',
         pixelArt: true,
-        scene: [Boot, Preloader, SetGrid, PlayGame, Score, , Menu, Play, About, GameOver, HelpScene]
+        scene: [Boot, Preloader, SetGrid, Score, , Menu, Play, About, GameOver, HelpScene]
     }
 
     // game creation

@@ -1,6 +1,6 @@
 {
   "version": "1",
-  "name": "Pelota",
+  "name": "Memory Master",
   "launch_path": "/index.html",
   "description": "Pelota Coin Collector",
   "type": "web",
@@ -21,6 +21,7 @@
     "*"
   ],
   "default_locale": "en",
+  "fullscreen": "true",
   "permissions": {
     "desktop-notification": {
       "description": "To show notifications"

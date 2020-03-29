@@ -287,34 +287,6 @@ class Play extends Phaser.Scene {
 
     _createEmitter(completed) {
         if (completed == (this.numValues * 2)) {
-
-            // this.congrate = this.add.sprite(game.config.width / 2, game.config.height / 2, 'congrate');
-
-            // //enimy
-            // this.anims.create({
-            //     key: 'cangradulation',
-            //     repeat: -1,
-            //     frameRate: 20,
-            //     frames: this.anims.generateFrameNames('congrate', { start: 1, end: 45 })
-            // });
-
-            // this.congrate.play('cangradulation');
-            // // this.enimyR.displayWidth = 100;
-            // // this.enimyR.displayHeight = 100;
-
-            // this.congrate2 = this.add.sprite(game.config.width / 3, game.config.height / 1.5, 'congrate2');
-
-            // //enimy
-            // this.anims.create({
-            //     key: 'cangradulation2',
-            //     repeat: -1,
-            //     frameRate: 20,
-            //     frames: this.anims.generateFrameNames('congrate2', { start: 1, end: 45 })
-            // });
-
-            // this.congrate2.play('cangradulation2');
-            // // this.enimyR.displayWidth = 100;
-            // // this.enimyR.displayHeight = 100;
             this.scene.start('GameOver');
         }
     }
