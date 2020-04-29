@@ -7,22 +7,34 @@ class SetGrid extends Phaser.Scene {
     // preloading assets
     preload() {
         //coin
-        this.load.spritesheet('setButton', 'assets/spritesheet/size-buttons.png', { frameWidth: 400, frameHeight: 100 });
+        // this.load.spritesheet('setButton', 'assets/spritesheet/size-buttons.png', { frameWidth: 400, frameHeight: 100 });
         this.load.image("bgMenus", "assets/img/Select_a_puzzle_size_bg.png");
 
-        this.load.spritesheet('btn_Tiny', 'assets/img/Levels/Tiny.png', { frameWidth: 192, frameHeight: 180 });
-        this.load.spritesheet('btn_small', 'assets/img/Levels/Small.png', { frameWidth: 192, frameHeight: 180 });
-        this.load.spritesheet('btn_medium', 'assets/img/Levels/Medium.png', { frameWidth: 192, frameHeight: 180 });
-        this.load.spritesheet('btn_medium2', 'assets/img/Levels/Medium2.png', { frameWidth: 192, frameHeight: 180 });
-        this.load.spritesheet('btn_large', 'assets/img/Levels/Large.png', { frameWidth: 192, frameHeight: 180 });
-        this.load.spritesheet('btn_huge', 'assets/img/Levels/Huge.png', { frameWidth: 192, frameHeight: 180 });
+        // this.load.spritesheet('btn_Tiny', 'assets/img/Levels/Tiny.png', { frameWidth: 192, frameHeight: 180 });
+        // this.load.spritesheet('btn_small', 'assets/img/Levels/Small.png', { frameWidth: 192, frameHeight: 180 });
+        // this.load.spritesheet('btn_medium', 'assets/img/Levels/Medium.png', { frameWidth: 192, frameHeight: 180 });
+        // this.load.spritesheet('btn_medium2', 'assets/img/Levels/Medium2.png', { frameWidth: 192, frameHeight: 180 });
+        // this.load.spritesheet('btn_large', 'assets/img/Levels/Large.png', { frameWidth: 192, frameHeight: 180 });
+        // this.load.spritesheet('btn_huge', 'assets/img/Levels/Huge.png', { frameWidth: 192, frameHeight: 180 });
 
-        //this.load.spritesheet('btn_play_hover', 'assets/img/btn_play_hover_new.png', { frameWidth: 192, frameHeight: 180 });
-        this.load.spritesheet('btn_small_hover', 'assets/img/Levels/SmallHover.png', { frameWidth: 192, frameHeight: 180 });
-        this.load.spritesheet('btn_medium_hover', 'assets/img/Levels/MediumHover.png', { frameWidth: 192, frameHeight: 180 });
-        this.load.spritesheet('btn_medium2_hover', 'assets/img/Levels/Medium2Hover.png', { frameWidth: 192, frameHeight: 180 });
-        this.load.spritesheet('btn_large_hover', 'assets/img/Levels/LargeHover.png', { frameWidth: 192, frameHeight: 180 });
-        this.load.spritesheet('btn_huge_hover', 'assets/img/Levels/HugeHover.png', { frameWidth: 192, frameHeight: 180 });
+        // //this.load.spritesheet('btn_play_hover', 'assets/img/btn_play_hover_new.png', { frameWidth: 192, frameHeight: 180 });
+        // this.load.spritesheet('btn_small_hover', 'assets/img/Levels/SmallHover.png', { frameWidth: 192, frameHeight: 180 });
+        // this.load.spritesheet('btn_medium_hover', 'assets/img/Levels/MediumHover.png', { frameWidth: 192, frameHeight: 180 });
+        // this.load.spritesheet('btn_medium2_hover', 'assets/img/Levels/Medium2Hover.png', { frameWidth: 192, frameHeight: 180 });
+        // this.load.spritesheet('btn_large_hover', 'assets/img/Levels/LargeHover.png', { frameWidth: 192, frameHeight: 180 });
+        // this.load.spritesheet('btn_huge_hover', 'assets/img/Levels/HugeHover.png', { frameWidth: 192, frameHeight: 180 });
+
+        this.load.image("btn_Tiny", "assets/img/Levels/Tiny.png");
+        this.load.image("btn_small", "assets/img/Levels/Small.png");
+        this.load.image("btn_medium", "assets/img/Levels/Medium.png");
+        this.load.image("btn_medium2", "assets/img/Levels/Medium2.png");
+        this.load.image("btn_large", "assets/img/Levels/Large.png");
+        this.load.image("btn_huge", "assets/img/Levels/Huge.png");
+        this.load.image("btn_small_hover", "assets/img/Levels/SmallHover.png");
+        this.load.image("btn_medium_hover", "assets/img/Levels/MediumHover.png");
+        this.load.image("btn_medium2_hover", "assets/img/Levels/Medium2Hover.png");
+        this.load.image("btn_large_hover", "assets/img/Levels/LargeHover.png");
+        this.load.image("btn_huge_hover", "assets/img/Levels/HugeHover.png");
 
         this.load.image("btn_Tiny_hover", "assets/img/Levels/TinyHover.png");
     }
@@ -61,25 +73,18 @@ class SetGrid extends Phaser.Scene {
 
 
         this.input.keyboard.on('keyup', function (e) {
-            if (e.key == "SoftLeft") {
-                //console.log("soft left key");
-                this.goToOptionScene();
-            } else if (e.key == "SoftRight") {
-                //console.log("soft right key");
-                this.goToContactScene();
-
-            }
-        }, this);
-
-        this.input.keyboard.on('keyup', function (e) {
-            console.log(e);
             if (e.key == "Enter") {
                 //console.log("soft left key");
                 this.callMenuButton();
             }
-            if (e.key == "Backspace") {
+            if (e.key == "SoftRight") {
                 //console.log("soft left key");
-                this.scene.start('Menu');
+                this.scene.transition({
+                    target: 'Menu',
+                    moveAbove: true,
+                    duration: 50,
+                })
+                // this.scene.start('Menu');
             }
         }, this);
 
@@ -115,7 +120,7 @@ class SetGrid extends Phaser.Scene {
         this.btn_huge.displayWidth = game.config.width / 2.8;
 
 
-        this.back = this.add.text(game.config.width - game.config.width * 10 / 100, game.config.height - game.config.height * 5 / 100, "Back").setFontSize(50).setFontFamily("Arial").setOrigin(0.5);
+        this.back = this.add.text(game.config.width - game.config.width * 10 / 100, game.config.height - game.config.height * 5 / 100, "Back").setFontSize(30).setFontFamily("Arial").setOrigin(0.5);
 
 
         // this.input.keyboard.on('keyup_ENTER', function (event) {
@@ -129,7 +134,12 @@ class SetGrid extends Phaser.Scene {
     setGridSize(cols, rows) {
         Memory.gridCols = cols;
         Memory.gridRows = rows;
-        this.scene.start('Play');
+        // this.scene.start('Play');
+        this.scene.transition({
+            target: 'Play',
+            moveAbove: true,
+            duration: 200,
+        })
     }
 
     // method to be called at each frame
@@ -143,22 +153,6 @@ class SetGrid extends Phaser.Scene {
             // console.log("DOWN CLICK");
             this.changeMenuButtonWithArrowDown();
         }
-
-
-        if (Phaser.Input.Keyboard.JustDown(this.back_space)) {
-            //console.log("back CLICK");
-            this.goToContactScene();
-        }
-
-    }
-
-    goToContactScene() {
-        this.scene.start('ContactScene');
-    }
-
-
-    goToOptionScene() {
-        this.scene.start('OptionScene');
     }
 
     changeMenuButtonWithArrowDown() {
@@ -332,42 +326,72 @@ class SetGrid extends Phaser.Scene {
                 console.log("aaaaa")
                 gameOptions.col = 4;
                 gameOptions.raw = 3;
-                this.scene.start('Play');
+                // this.scene.start('Play');
+                this.scene.transition({
+                    target: 'Play',
+                    moveAbove: true,
+                    duration: 200,
+                })
                 break;
             case "small":
                 //console.log("ScoreScene SELECT");
                 console.log("aaaaa")
                 gameOptions.col = 4;
                 gameOptions.raw = 4;
-                this.scene.start('Play');
+                // this.scene.start('Play');
+                this.scene.transition({
+                    target: 'Play',
+                    moveAbove: true,
+                    duration: 200,
+                })
                 break;
             case "medium":
                 //console.log("Option SELECT");
                 console.log("aaaaa")
                 gameOptions.col = 5;
                 gameOptions.raw = 4;
-                this.scene.start('Play');
+                // this.scene.start('Play');
+                this.scene.transition({
+                    target: 'Play',
+                    moveAbove: true,
+                    duration: 200,
+                })
                 break;
             case "medium2":
                 //console.log("Play SELECT");
                 console.log("aaaaa")
                 gameOptions.col = 6;
                 gameOptions.raw = 4;
-                this.scene.start('Play');
+                // this.scene.start('Play');
+                this.scene.transition({
+                    target: 'Play',
+                    moveAbove: true,
+                    duration: 200,
+                })
                 break;
             case "large":
                 //console.log("ScoreScene SELECT");
                 console.log("aaaaa")
                 gameOptions.col = 7;
                 gameOptions.raw = 4;
-                this.scene.start('Play');
+                // this.scene.start('Play');
+                this.scene.transition({
+                    target: 'Play',
+                    moveAbove: true,
+                    duration: 200,
+                })
                 break;
             case "huge":
                 //console.log("Option SELECT");
                 console.log("aaaaa")
                 gameOptions.col = 8;
                 gameOptions.raw = 4;
-                this.scene.start('Play');
+                // this.scene.start('Play');
+                this.scene.transition({
+                    target: 'Play',
+                    moveAbove: true,
+                    duration: 200,
+                })
                 break;
             default:
 

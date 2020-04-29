@@ -31,13 +31,6 @@ class Play extends Phaser.Scene {
         this.load.image("score", "assets/img/Score.png");
         this.load.image("move", "assets/img/Moves.png");
 
-        this.load.image("coin", "assets/img/coin.png");
-
-        this.load.image("fireball", "assets/img/fireball.png");
-
-        this.load.spritesheet('congrate', 'assets/spritesheet/firework4.png', { frameWidth: 500, frameHight: 500 });
-        this.load.spritesheet('congrate2', 'assets/spritesheet/firework3.png', { frameWidth: 500, frameHight: 500 });
-
     }
 
     // method to be executed once, when the scene has been created
@@ -52,22 +45,22 @@ class Play extends Phaser.Scene {
         this.move = gameOptions.move;
         score = gameOptions.score;
 
-        this.movepic = this.add.image(130, 50, 'move');
+        this.movepic = this.add.image(game.config.width / 4, 50, 'move');
         this.movepic.displayHeight = 69;
         this.movepic.displayWidth = 195;
-        this.moveText = this.add.text(170, 26, this.move, { fontSize: '45px', fill: '#FFF' });
+        this.moveText = this.add.text(170, 26, this.move, { fontSize: '40px', fill: '#FFF' });
 
-        this.scorepic = this.add.image(600, 50, 'score');
+        this.scorepic = this.add.image(game.config.width / 1.3, 50, 'score');
         this.scorepic.displayHeight = 69;
         this.scorepic.displayWidth = 195;
-        this.scoreText = this.add.text(650, 26, score, { fontSize: '45px', fill: '#FFF' });
+        this.scoreText = this.add.text(game.config.width / 1.13, 26, score, { fontSize: '40px', fill: '#FFF' });
 
         this.raws = gameOptions.raw;
         this.columns = gameOptions.col;
 
         this._setCardsSizeCompatible();
 
-        this.topBarHeight = game.config.width / 16.66666666;
+        this.topBarHeight = game.config.width / 2;
         this.rowWidth = (this.cardWidth + this.cardSpacing) * (this.columns - 1) + this.cardWidth;
         this.columnHeight = (this.cardWidth + this.cardSpacing) * (this.raws - 1) + this.cardWidth;
         this.leftMargin = (game.config.width - this.rowWidth) / 1.5;
@@ -86,6 +79,13 @@ class Play extends Phaser.Scene {
         this.assignCards();
         this.changeCard();
         this.SelectCardAssignPic();
+
+        this.input.keyboard.on('keyup', function (e) {
+            if (e.key == "SoftRight") {
+                //console.log("soft right key");
+                this.scene.start('SetGrid');
+            }
+        }, this);
     }
 
     _setCardsSizeCompatible() {
@@ -93,44 +93,44 @@ class Play extends Phaser.Scene {
             this.card_dis_width = 100;
             this.card_dis_height = 100;
             this.cardWidth = game.config.width / 10;
-            this.cardSpacing = game.config.width / 10;
+            this.cardSpacing = game.config.width / 8;
             this.pic_width = 90;
             this.pic_height = 90;
         } else if (this.raws == 4 && this.columns == 4) {
             this.card_dis_width = 100;
             this.card_dis_height = 100;
-            this.cardWidth = game.config.width / 10;
-            this.cardSpacing = game.config.width / 12;
+            this.cardWidth = game.config.width / 11;
+            this.cardSpacing = game.config.width / 8;
             this.pic_width = 90;
             this.pic_height = 90;
         } else if (this.raws == 4 && this.columns == 5) {
-            this.card_dis_width = 100;
-            this.card_dis_height = 100;
-            this.cardWidth = game.config.width / 10;
-            this.cardSpacing = game.config.width / 12;
-            this.pic_width = 90;
-            this.pic_height = 90;
-        } else if (this.raws == 4 && this.columns == 6) {
             this.card_dis_width = 90;
             this.card_dis_height = 90;
-            this.cardWidth = game.config.width / 17;
-            this.cardSpacing = game.config.width / 10;
+            this.cardWidth = game.config.width / 37;
+            this.cardSpacing = game.config.width / 6;
             this.pic_width = 80;
             this.pic_height = 80;
-        } else if (this.raws == 4 && this.columns == 7) {
-            this.card_dis_width = 85;
-            this.card_dis_height = 85;
-            this.cardWidth = game.config.width / 15;
-            this.cardSpacing = game.config.width / 15;
-            this.pic_width = 75;
-            this.pic_height = 75;
-        } else if (this.raws == 4 && this.columns == 8) {
+        } else if (this.raws == 4 && this.columns == 6) {
             this.card_dis_width = 80;
             this.card_dis_height = 80;
-            this.cardWidth = game.config.width / 18;
-            this.cardSpacing = game.config.width / 16;
+            this.cardWidth = game.config.width / 40;
+            this.cardSpacing = game.config.width / 7;
             this.pic_width = 70;
             this.pic_height = 70;
+        } else if (this.raws == 4 && this.columns == 7) {
+            this.card_dis_width = 60;
+            this.card_dis_height = 60;
+            this.cardWidth = game.config.width / 15;
+            this.cardSpacing = game.config.width / 15;
+            this.pic_width = 50;
+            this.pic_height = 50;
+        } else if (this.raws == 4 && this.columns == 8) {
+            this.card_dis_width = 50;
+            this.card_dis_height = 50;
+            this.cardWidth = game.config.width / 16;
+            this.cardSpacing = game.config.width / 16;
+            this.pic_width = 45;
+            this.pic_height = 45;
         }
     }
 
@@ -236,7 +236,6 @@ class Play extends Phaser.Scene {
             if (e.key == "Backspace") {
                 this.scene.start('SetGrid');
             }
-            console.log(e);
         }, this);
     }
 
@@ -273,6 +272,7 @@ class Play extends Phaser.Scene {
             this.moveCollect();
             this.completed += 2;
             this._createEmitter(this.completed);
+
         } else {
             compaire_pic_num.splice(0, 2);
             setTimeout(function () {
@@ -288,6 +288,7 @@ class Play extends Phaser.Scene {
     _createEmitter(completed) {
         if (completed == (this.numValues * 2)) {
             this.scene.start('GameOver');
+            this.completed = 0;
         }
     }
 
@@ -300,7 +301,6 @@ class Play extends Phaser.Scene {
         score += 10;
         this.avgScore = (score / this.move).toFixed(0);
         this.scoreText.setText(this.avgScore);
-        console.log(this.avgScore)
     }
 
     _setScoreLocalStorage(avgScore) {

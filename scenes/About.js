@@ -16,14 +16,19 @@ class About extends Phaser.Scene {
     this.image.displayHeight = game.config.height;
     this.image.displayWidth = game.config.width;
 
-    this.about = this.add.text(game.config.width - game.config.width * 10 / 100, game.config.height - game.config.height * 5 / 100, "Back").setFontSize(50).setFontFamily("Arial").setOrigin(0.5);
-    
+    this.about = this.add.text(game.config.width - game.config.width * 10 / 100, game.config.height - game.config.height * 5 / 100, "Back").setFontSize(30).setFontFamily("Arial").setOrigin(0.5);
+
     this.input.keyboard.on('keyup', function (e) {
-      if (e.key == "Backspace") {
-          //console.log("soft left key");
-          this.scene.start('Menu');
+      if (e.key == "SoftRight") {
+        //console.log("soft left key");
+        // this.scene.start('Menu');
+        this.scene.transition({
+          target: 'Menu',
+          moveAbove: true,
+          duration: 100,
+        })
       }
-  }, this);
+    }, this);
   }
 
   update() {

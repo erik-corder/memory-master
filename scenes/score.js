@@ -12,6 +12,19 @@ class Score extends Phaser.Scene {
     // method to be executed once, when the scene has been created
     create() {
 
+        //kaiads
+        getKaiAd({
+            publisher: 'ca24f2d0-de89-4c1a-80c4-51e14d317000',
+            app: 'Pelota',
+            slot: 'Pelota',
+            onerror: err => console.error('Custom catch:', err),
+            onready: ad => {
+                // Ad is ready to be displayed
+                // calling 'display' will display the ad
+                ad.call('display')
+            }
+        })
+
         //background
         this.image = this.add.image(game.config.width / 2, game.config.height / 2, 'background');
         this.image.displayHeight = game.config.height;
@@ -66,11 +79,16 @@ class Score extends Phaser.Scene {
         this.largeBestScore = this.add.text(game.config.width - game.config.width / 5.5, game.config.height - game.config.height / 2.56, this.hbscore).setFontSize(40).setFontFamily("Arial").setOrigin(0.5);
 
         //for back
-        this.about = this.add.text(game.config.width - game.config.width * 10 / 100, game.config.height - game.config.height * 5 / 100, "Back").setFontSize(50).setFontFamily("Arial").setOrigin(0.5);
+        this.about = this.add.text(game.config.width - game.config.width * 10 / 100, game.config.height - game.config.height * 5 / 100, "Back").setFontSize(30).setFontFamily("Arial").setOrigin(0.5);
         this.input.keyboard.on('keyup', function (e) {
-            if (e.key == "Backspace") {
+            if (e.key == "SoftRight") {
                 //console.log("soft left key");
-                this.scene.start('Menu');
+                // this.scene.start('Menu');
+                this.scene.transition({
+                    target: 'Menu',
+                    moveAbove: true,
+                    duration: 100,
+                })
             }
         }, this);
     }

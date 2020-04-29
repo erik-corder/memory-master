@@ -24,6 +24,8 @@ var gameOptions = {
     // amount of bars each wall is divided in
     bars: 4,
 
+    //gameWinNumber
+    gameWinNumber: 0,
 
     // array with the colors to pick from
     barColors: [0x1abc9c, 0x2980b9, 0x9b59b6, 0xf1c40f, 0xc0392b, 0xecf0f1]

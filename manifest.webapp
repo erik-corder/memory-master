@@ -1,18 +1,19 @@
 {
-  "version": "1",
+  "version": "1.0.1",
   "name": "Memory Master",
   "launch_path": "/index.html",
-  "description": "Pelota Coin Collector",
+  "description": "Memory Master is a memory game where you need to match pairs of tiles. Playing is very simple - you turn over one tile and then try to find a matching tile. There are many levels from easier to harder !",
+  "subtitle": "Train your brain! Play every day",
   "type": "web",
   "icons": {
-    "16": "/icons/pelota16.png",
-    "48": "/icons/pelota48.png",
-    "60": "/icons/pelota60.png",
-    "128": "/icons/pelota128.png"
+    "16": "/icons/MM_Icon16.png",
+    "48": "/icons/MM_Icon48.png",
+    "60": "/icons/MM_Icon60.png",
+    "128": "/icons/MM_Icon128.png"
   },
   "developer": {
-    "name": "Your name",
-    "url": "https://nadeeshaeyepax.github.io/Color_Jump/"
+    "name": "Eyepax",
+    "url": "https://www.eyepax.com"
   },
   "dependencies": {
 		"ads-sdk": "1.3.0"
@@ -20,8 +21,10 @@
   "installs_allowed_from": [
     "*"
   ],
-  "default_locale": "en",
-  "fullscreen": "true",
+  "default_locale": "en-US",
+  "categories": [
+    "sports"
+  ],
   "permissions": {
     "desktop-notification": {
       "description": "To show notifications"
@@ -32,5 +35,14 @@
     "alarms": {
       "description": "Scheduling alarms"
     }
+  },
+  "fullscreen": "true",
+  "locales": {
+     "en-US": {
+      "name": "Memory Master",
+      "subtitle": "Train your brain! Play every day",
+      "description": "Memory Master is a memory game where you need to match pairs of tiles. Playing is very simple - you turn over one tile and then try to find a matching tile. There are many levels from easier to harder !"
+    }
   }
 }
+
