@@ -311,7 +311,7 @@ class Menu extends Phaser.Scene {
                 this.scene.transition({
                     target: 'SetGrid',
                     moveAbove: true,
-                    duration: 100,
+                    duration: 200,
                 })
                 break;
             case "ScoreScene":
@@ -320,7 +320,7 @@ class Menu extends Phaser.Scene {
                 this.scene.transition({
                     target: 'Score',
                     moveAbove: true,
-                    duration: 100,
+                    duration: 200,
                 })
                 break;
             case "Help":
@@ -329,7 +329,7 @@ class Menu extends Phaser.Scene {
                 this.scene.transition({
                     target: 'HelpScene',
                     moveAbove: true,
-                    duration: 100,
+                    duration: 200,
                 })
                 break;
             // case "Exit":
