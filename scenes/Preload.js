@@ -23,7 +23,7 @@ class Preloader extends Phaser.Scene {
         this.scene.transition({
           target: 'Menu',
           moveAbove: true,
-          duration: 100,
+          duration: 1000,
         })
         // this.scene.start('Menu')
       },
@@ -39,14 +39,15 @@ class Preloader extends Phaser.Scene {
   gotoNextScreen() {
     var isFirst = localStorage.getItem('isFirstTime')
     //console.log("is first"+ isFirst);
-    if (isFirst == null) {
-      // this.scene.start('IntroductionScene');
-      this.scene.transition({
-        target: 'IntroductionScene',
-        moveAbove: true,
-        duration: 100,
-      })
-    } else {
+    // if (isFirst == null) {
+    //   // this.scene.start('IntroductionScene');
+    //   this.scene.transition({
+    //     target: 'IntroductionScene',
+    //     moveAbove: true,
+    //     duration: 100,
+    //   })
+    // } else
+     {
       // this.scene.start('Menu');
       this.scene.transition({
         target: 'Menu',
