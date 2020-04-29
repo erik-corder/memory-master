@@ -44,6 +44,7 @@ class Play extends Phaser.Scene {
 
         this.move = gameOptions.move;
         score = gameOptions.score;
+        this.compairedfinished = [];
 
         this.movepic = this.add.image(game.config.width / 4, 50, 'move');
         this.movepic.displayHeight = 69;
@@ -72,7 +73,7 @@ class Play extends Phaser.Scene {
         this.lastClickedIndex = -1; // the index of the card that was last clicked
         this.compaire_pic = new Array();
         this.compaire_pic_num = new Array();
-
+        this.cards_index = new Array();
 
 
         this.createGrid();
@@ -163,6 +164,7 @@ class Play extends Phaser.Scene {
             // remove that value from the array so it can't be used again
             this.cardValues.splice(randNum, 1);
             this.cards[i].clickable = true;
+            this.cards[i].compaired = false;
         }
     }
 
@@ -239,11 +241,12 @@ class Play extends Phaser.Scene {
         }, this);
     }
 
-    SelectCardAssignPic() {
+    SelectCardAssignPic() {     
         this.input.keyboard.on('keyup', function (e) {
             for (var i = 0; i < (gameOptions.col * gameOptions.raw); i++) {
+                // console.log(this.cards[i].compaired +" "+i)
                 if (e.key == "Enter") {
-                    if (this.cards[i].selected === "selected") {
+                    if (this.cards[i].selected === "selected" && this.cards[i].compaired == false) {
                         var y = this.cards[i].y
                         var x = this.cards[i].x
                         var pic = this.add.sprite(x, y, "c" + this.cards[i].cardValue);
@@ -251,8 +254,9 @@ class Play extends Phaser.Scene {
                         pic.displayHeight = this.pic_height;
                         this.compaire_pic_num.push(this.cards[i].cardValue);
                         this.compaire_pic.push(pic);
-                        if (this.compaire_pic_num.length == 2 || this.compaire_pic.length == 2) {
-                            this.MatchChecked(this.compaire_pic_num, this.compaire_pic);
+                        this.cards_index.push(i);
+                       if (this.compaire_pic_num.length == 2 || this.compaire_pic.length == 2) {                            
+                            this.MatchChecked(this.compaire_pic_num, this.compaire_pic, this.cards_index);
                         }
                     } else {
                         console.log('unselected');
@@ -262,8 +266,13 @@ class Play extends Phaser.Scene {
         }, this);
     }
 
-    MatchChecked(compaire_pic_num, compaire_pic) {
-        if (compaire_pic_num[0] == compaire_pic_num[1]) {
+    MatchChecked(compaire_pic_num, compaire_pic,cards_index) {
+        if ((compaire_pic_num[0] == compaire_pic_num[1]) && (cards_index[0] != cards_index[1])) {
+            console.log(cards_index)
+            this.compairedfinished.push(compaire_pic_num[0]);
+            this.cards[cards_index[0]].compaired = true;
+            this.cards[cards_index[1]].compaired = true;
+            this.cards_index.splice(0, 2);
             compaire_pic_num.splice(0, 2);
             setTimeout(function () {
                 compaire_pic.splice(0, 2);
@@ -275,6 +284,7 @@ class Play extends Phaser.Scene {
 
         } else {
             compaire_pic_num.splice(0, 2);
+            this.cards_index.splice(0, 2);
             setTimeout(function () {
                 compaire_pic[0].destroy();
                 compaire_pic[1].destroy();
