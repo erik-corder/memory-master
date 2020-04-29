@@ -87,23 +87,53 @@ class GameOver extends Phaser.Scene {
             this.bestScore.setText(localStorage.getItem('Best Score'));
         }
 
-        if (score > localStorage.getItem('Best Score')) {
-            localStorage.setItem('Best Score', score);
-            this.bestScore.setText(localStorage.getItem('Best Score'));
-        }
+        // if (score > localStorage.getItem('Best Score')) {
+        //     localStorage.setItem('Best Score', score);
+        //     this.bestScore.setText(localStorage.getItem('Best Score'));
+        // }
 
         if(gameOptions.col == 4 &&  gameOptions.raw == 3 && score >= localStorage.getItem('tinyScore')){
             localStorage.setItem('tinyScore', score);
+            if (localStorage.getItem('tinyScore') === null) {
+                this.bestScore.setText(0);
+            } else {
+                this.bestScore.setText(localStorage.getItem('tinyScore'));
+            }           
         }else if (gameOptions.col == 4 &&  gameOptions.raw == 4 && score >= localStorage.getItem('smallScore')){
             localStorage.setItem('smallScore', score);
+            if (localStorage.getItem('smallScore') === null) {
+                this.bestScore.setText(0);
+            } else {
+                this.bestScore.setText(localStorage.getItem('smallScore'));
+            }
         } else if (gameOptions.col == 5 &&  gameOptions.raw == 4 && score >= localStorage.getItem('mediumScore')){
             localStorage.setItem('mediumScore', score);
+            if (localStorage.getItem('mediumScore') === null) {
+                this.bestScore.setText(0);
+            } else {
+                this.bestScore.setText(localStorage.getItem('mediumScore'));
+            }
         }else if (gameOptions.col == 6 &&  gameOptions.raw == 4 && score >= localStorage.getItem('medium2Score')){
             localStorage.setItem('medium2Score', score);
+            if (localStorage.getItem('medium2Score') === null) {
+                this.bestScore.setText(0);
+            } else {
+                this.bestScore.setText(localStorage.getItem('medium2Score'));
+            }
         }else if (gameOptions.col == 7 &&  gameOptions.raw == 4 && score >= localStorage.getItem('largeScore')){
             localStorage.setItem('largeScore', score);
+            if (localStorage.getItem('largeScore') === null) {
+                this.bestScore.setText(0);
+            } else {
+                this.bestScore.setText(localStorage.getItem('largeScore'));
+            }
         }else if (gameOptions.col == 8 &&  gameOptions.raw == 4 && score >= localStorage.getItem('hugeScore')){
             localStorage.setItem('hugeScore', score);
+            if (localStorage.getItem('hugeScore') === null) {
+                this.bestScore.setText(0);
+            } else {
+                this.bestScore.setText(localStorage.getItem('hugeScore'));
+            }
         }
 
         // Click to play text

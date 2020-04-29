@@ -9,7 +9,6 @@ class Play extends Phaser.Scene {
     // preloading assets
     preload() {
         this.load.image("gamePlayBg", "assets/img/bg.png");
-
         this.load.image("c0", "assets/img/cards/1.png");
         this.load.image("c1", "assets/img/cards/2.png");
         this.load.image("c2", "assets/img/cards/3.png");
