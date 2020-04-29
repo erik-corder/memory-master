@@ -300,7 +300,8 @@ class Play extends Phaser.Scene {
     scoreCollect() {
         score += 10;
         this.avgScore = (score / this.move).toFixed(0);
-        this.scoreText.setText(this.avgScore);
+        this.scoreText.setText(this.avgScore*10);
+        score = this.avgScore*10;
     }
 
     _setScoreLocalStorage(avgScore) {

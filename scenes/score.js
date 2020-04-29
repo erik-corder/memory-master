@@ -29,7 +29,7 @@ class Score extends Phaser.Scene {
         this.image = this.add.image(game.config.width / 2, game.config.height / 2, 'background');
         this.image.displayHeight = game.config.height;
         this.image.displayWidth = game.config.width;
-
+       
         //set tiny best score
         if (localStorage.getItem("tinyScore") === null) {
             this.tbscore = 0

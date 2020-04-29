@@ -80,7 +80,7 @@ class GameOver extends Phaser.Scene {
 
         //this.finalScore.displayHeight = game.config.height/5;
         //this.finalScore.displayWidth = game.config.width/4;
-
+       
         if (localStorage.getItem('Best Score') === null) {
             this.bestScore.setText(0);
         } else {
@@ -88,10 +88,22 @@ class GameOver extends Phaser.Scene {
         }
 
         if (score > localStorage.getItem('Best Score')) {
-            localStorage.setItem('Third Best Score', localStorage.getItem('Second Best Score'));
-            localStorage.setItem('Second Best Score', localStorage.getItem('Best Score'));
             localStorage.setItem('Best Score', score);
             this.bestScore.setText(localStorage.getItem('Best Score'));
+        }
+
+        if(gameOptions.col == 4 &&  gameOptions.raw == 3 && score >= localStorage.getItem('tinyScore')){
+            localStorage.setItem('tinyScore', score);
+        }else if (gameOptions.col == 4 &&  gameOptions.raw == 4 && score >= localStorage.getItem('smallScore')){
+            localStorage.setItem('smallScore', score);
+        } else if (gameOptions.col == 5 &&  gameOptions.raw == 4 && score >= localStorage.getItem('mediumScore')){
+            localStorage.setItem('mediumScore', score);
+        }else if (gameOptions.col == 6 &&  gameOptions.raw == 4 && score >= localStorage.getItem('medium2Score')){
+            localStorage.setItem('medium2Score', score);
+        }else if (gameOptions.col == 7 &&  gameOptions.raw == 4 && score >= localStorage.getItem('largeScore')){
+            localStorage.setItem('largeScore', score);
+        }else if (gameOptions.col == 8 &&  gameOptions.raw == 4 && score >= localStorage.getItem('hugeScore')){
+            localStorage.setItem('hugeScore', score);
         }
 
         // Click to play text

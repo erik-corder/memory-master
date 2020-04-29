@@ -17,6 +17,11 @@ class Boot extends Phaser.Scene {
     }
 
     create() {
-        this.scene.start('Preloader');
+        this.scene.transition({
+            target: 'Preloader',
+            moveAbove: true,
+            duration: 1000,
+          })
+        // this.scene.start('Preloader');
     }
 }

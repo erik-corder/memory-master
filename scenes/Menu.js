@@ -63,7 +63,7 @@ class Menu extends Phaser.Scene {
             if (e.key == "SoftRight") {
                 //console.log("soft right key");
                 this.scene.transition({
-                    target: 'ContactScene',
+                    target: 'About',
                     moveAbove: true,
                     duration: 100,
                 })
@@ -168,7 +168,7 @@ class Menu extends Phaser.Scene {
     goToContactScene() {
         // this.scene.start('ContactScene');
         this.scene.transition({
-            target: 'ContactScene',
+            target: 'About',
             moveAbove: true,
             duration: 100,
         })
