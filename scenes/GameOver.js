@@ -25,7 +25,7 @@ class GameOver extends Phaser.Scene {
         // this.load.spritesheet('btn_exit_hover', 'assets/img/btn_try_again_hover_new.png', { frameWidth: 192, frameHeight: 180 });
 
         this.load.image("btn_exit", "assets/img/btn_exit_new.png");
-        this.load.image("btn_exit_hover", "assets/img/btn_try_again_hover_new.png");
+        this.load.image("btn_exit_hover", "assets/img/btn_exit_hover_new.png");
 
 
     }
