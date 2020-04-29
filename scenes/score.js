@@ -13,17 +13,17 @@ class Score extends Phaser.Scene {
     create() {
 
         //kaiads
-        getKaiAd({
-            publisher: 'ca24f2d0-de89-4c1a-80c4-51e14d317000',
-            app: 'Pelota',
-            slot: 'Pelota',
-            onerror: err => console.error('Custom catch:', err),
-            onready: ad => {
-                // Ad is ready to be displayed
-                // calling 'display' will display the ad
-                ad.call('display')
-            }
-        })
+        // getKaiAd({
+        //     publisher: 'ca24f2d0-de89-4c1a-80c4-51e14d317000',
+        //     app: 'Pelota',
+        //     slot: 'Pelota',
+        //     onerror: err => console.error('Custom catch:', err),
+        //     onready: ad => {
+        //         // Ad is ready to be displayed
+        //         // calling 'display' will display the ad
+        //         ad.call('display')
+        //     }
+        // })
 
         //background
         this.image = this.add.image(game.config.width / 2, game.config.height / 2, 'background');
@@ -81,7 +81,7 @@ class Score extends Phaser.Scene {
         //for back
         this.about = this.add.text(game.config.width - game.config.width * 10 / 100, game.config.height - game.config.height * 5 / 100, "Back").setFontSize(30).setFontFamily("Arial").setOrigin(0.5);
         this.input.keyboard.on('keyup', function (e) {
-            if (e.key == "SoftRight") {
+            if (e.key == "SoftRight" || e.key == "Backspace") {
                 //console.log("soft left key");
                 // this.scene.start('Menu');
                 this.scene.transition({
