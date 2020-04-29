@@ -48,12 +48,12 @@ class Play extends Phaser.Scene {
         this.movepic = this.add.image(game.config.width / 4, 50, 'move');
         this.movepic.displayHeight = 69;
         this.movepic.displayWidth = 195;
-        this.moveText = this.add.text(170, 26, this.move, { fontSize: '40px', fill: '#FFF' });
+        this.moveText = this.add.text(165, 32, this.move, { fontSize: '35px', fill: '#FFF' });
 
         this.scorepic = this.add.image(game.config.width / 1.3, 50, 'score');
         this.scorepic.displayHeight = 69;
         this.scorepic.displayWidth = 195;
-        this.scoreText = this.add.text(game.config.width / 1.13, 26, score, { fontSize: '40px', fill: '#FFF' });
+        this.scoreText = this.add.text(game.config.width / 1.18, 32, score, { fontSize: '35px', fill: '#FFF' });
 
         this.raws = gameOptions.raw;
         this.columns = gameOptions.col;
@@ -267,9 +267,9 @@ class Play extends Phaser.Scene {
             compaire_pic_num.splice(0, 2);
             setTimeout(function () {
                 compaire_pic.splice(0, 2);
-            }, 1000);
-            this.scoreCollect();
+            }, 1000); 
             this.moveCollect();
+            this.scoreCollect();           
             this.completed += 2;
             this._createEmitter(this.completed);
 

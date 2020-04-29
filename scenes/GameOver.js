@@ -63,9 +63,9 @@ class GameOver extends Phaser.Scene {
         //this.gameOver = this.add.text(game.config.width / 4, game.config.height / 2, 'GAME OVER', { fontSize: '80px', fill: '#FFF' });
 
         //===============================
-        this.FinalScore = this.add.text(game.config.width / 1.6, game.config.width / 1.35, score, { fontSize: '40px', fill: '#FFF' });
+        this.FinalScore = this.add.text(game.config.width / 1.7, game.config.width /  1.6, score, { fontSize: '40px', fill: '#FFF' });
 
-        this.bestScore = this.add.text(game.config.width / 1.6, game.config.width / 1.6, '' + localStorage.getItem('Best Score'), { fontSize: '40px', fill: '#FFF' });
+        this.bestScore = this.add.text(game.config.width / 1.7, game.config.width / 1.35, '' + localStorage.getItem('Best Score'), { fontSize: '40px', fill: '#FFF' });
 
         //==================================
 
