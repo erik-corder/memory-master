@@ -22,7 +22,7 @@
   "default_locale": "en-US",
   "categories": [
     "sports",
-    "Games"
+    "games"
   ],
   "permissions": {
     "desktop-notification": {
