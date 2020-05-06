@@ -1,17 +1,13 @@
 {
-  "version": "1.0.2",
+  "version": "1.0.3",
   "name": "Memory Master",
   "launch_path": "/index.html",
   "description": "Memory Master is a memory game where you need to match pairs of tiles. Playing is very simple - you turn over one tile and then try to find a matching tile. There are many levels from easier to harder !",
   "subtitle": "Train your brain! Play every day",
-  "type": "privileged",
-  "icons": {
-    "16": "/icons/MM_Icon16.png",
-    "48": "/icons/MM_Icon48.png",
-    "56": "/icons/MM_Icon56.png",
-    "60": "/icons/MM_Icon60.png",
-    "112": "/icons/MM_Icon112.png",
-    "128": "/icons/MM_Icon128.png"
+  "type": "web",
+  "icons": {   
+    "56": "/icons/MM_Icon56.png",  
+    "112": "/icons/MM_Icon112.png"
   },
   "developer": {
     "name": "Eyepax",
@@ -25,7 +21,8 @@
   ],
   "default_locale": "en-US",
   "categories": [
-    "sports"
+    "sports",
+    "Games"
   ],
   "permissions": {
     "desktop-notification": {

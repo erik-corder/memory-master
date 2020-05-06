@@ -57,7 +57,7 @@ class Score extends Phaser.Scene {
         } else {
             this.tbscore = localStorage.getItem("tinyScore");
         }
-        this.tinyBestScore = this.add.text(game.config.width - game.config.width / 1.6, game.config.height - game.config.height / 1.53, this.tbscore).setFontSize(40).setFontFamily("Arial").setOrigin(0.5);
+        this.tinyBestScore = this.add.text(game.config.width - game.config.width / 1.6, game.config.height - game.config.height / 1.53, this.tbscore).setFontSize(35).setFontFamily("Arial").setOrigin(0.5);
 
         //set small best score
         if (localStorage.getItem("smallScore") === null) {
@@ -65,7 +65,7 @@ class Score extends Phaser.Scene {
         } else {
             this.sbscore = localStorage.getItem("smallScore");
         }
-        this.smallBestScore = this.add.text(game.config.width - game.config.width / 5.5, game.config.height - game.config.height / 1.53, this.sbscore).setFontSize(40).setFontFamily("Arial").setOrigin(0.5);
+        this.smallBestScore = this.add.text(game.config.width - game.config.width / 5.5, game.config.height - game.config.height / 1.53, this.sbscore).setFontSize(35).setFontFamily("Arial").setOrigin(0.5);
 
         //set medium best score
         if (localStorage.getItem("mediumScore") === null) {
@@ -73,7 +73,7 @@ class Score extends Phaser.Scene {
         } else {
             this.mbscore = localStorage.getItem("mediumScore");
         }
-        this.mediumBestScore = this.add.text(game.config.width - game.config.width / 1.85, game.config.height - game.config.height / 1.92, this.mbscore).setFontSize(40).setFontFamily("Arial").setOrigin(0.5);
+        this.mediumBestScore = this.add.text(game.config.width - game.config.width / 1.85, game.config.height - game.config.height / 1.92, this.mbscore).setFontSize(35).setFontFamily("Arial").setOrigin(0.5);
 
         //set medium 2 best score
         if (localStorage.getItem("medium2Score") === null) {
@@ -81,7 +81,7 @@ class Score extends Phaser.Scene {
         } else {
             this.mb2score = localStorage.getItem("medium2Score");
         }
-        this.mediumBestScore = this.add.text(game.config.width - game.config.width / 7.5, game.config.height - game.config.height / 1.92, this.mb2score).setFontSize(40).setFontFamily("Arial").setOrigin(0.5);
+        this.mediumBestScore = this.add.text(game.config.width - game.config.width / 7.5, game.config.height - game.config.height / 1.92, this.mb2score).setFontSize(35).setFontFamily("Arial").setOrigin(0.5);
 
         //set large best score
         if (localStorage.getItem("largeScore") === null) {
@@ -89,7 +89,7 @@ class Score extends Phaser.Scene {
         } else {
             this.lbscore = localStorage.getItem("largeScore");
         }
-        this.largeBestScore = this.add.text(game.config.width - game.config.width / 1.75, game.config.height - game.config.height / 2.56, this.lbscore).setFontSize(40).setFontFamily("Arial").setOrigin(0.5);
+        this.largeBestScore = this.add.text(game.config.width - game.config.width / 1.75, game.config.height - game.config.height / 2.56, this.lbscore).setFontSize(35).setFontFamily("Arial").setOrigin(0.5);
 
         //set huge best score
         if (localStorage.getItem("hugeScore") === null) {
@@ -97,7 +97,7 @@ class Score extends Phaser.Scene {
         } else {
             this.hbscore = localStorage.getItem("hugeScore");
         }
-        this.largeBestScore = this.add.text(game.config.width - game.config.width / 5.5, game.config.height - game.config.height / 2.56, this.hbscore).setFontSize(40).setFontFamily("Arial").setOrigin(0.5);
+        this.largeBestScore = this.add.text(game.config.width - game.config.width / 5.5, game.config.height - game.config.height / 2.56, this.hbscore).setFontSize(35).setFontFamily("Arial").setOrigin(0.5);
 
         //for back
         this.about = this.add.text(game.config.width - game.config.width * 10 / 100, game.config.height - game.config.height * 5 / 100, "Back").setFontSize(30).setFontFamily("Arial").setOrigin(0.5);
