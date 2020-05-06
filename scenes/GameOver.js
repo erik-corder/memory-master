@@ -32,6 +32,27 @@ class GameOver extends Phaser.Scene {
 
     create() {
 
+        //
+        this.events.on('transitionstart', function (fromScene, duration) {
+            this.cameras.main.setZoom(0.001);
+        }, this);
+
+        this.events.on('transitioncomplete', function (fromScene, duration) {
+            // this.cameras.main.zoomTo(1, 300);
+            this.cameras.main.zoomTo(1, 300);
+        }, this);
+
+        // this.events.on('transitioncomplete', function (fromScene) {
+
+        // });
+
+        this.events.on('transitionout', function (toScene, duration) {
+
+            this.cameras.main.zoomTo(0.05, 300);
+
+        }, this);
+        //
+
         this.input.keyboard.on('keyup', function (e) {
             if (e.key == "Enter") {
                 //console.log("Enter key");
@@ -63,7 +84,7 @@ class GameOver extends Phaser.Scene {
         //this.gameOver = this.add.text(game.config.width / 4, game.config.height / 2, 'GAME OVER', { fontSize: '80px', fill: '#FFF' });
 
         //===============================
-        this.FinalScore = this.add.text(game.config.width / 1.7, game.config.width /  1.57, score, { fontSize: '40px', fill: '#FFF' });
+        this.FinalScore = this.add.text(game.config.width / 1.7, game.config.width / 1.57, score, { fontSize: '40px', fill: '#FFF' });
 
         this.bestScore = this.add.text(game.config.width / 1.7, game.config.width / 1.35, '' + localStorage.getItem('Best Score'), { fontSize: '40px', fill: '#FFF' });
 
@@ -80,7 +101,7 @@ class GameOver extends Phaser.Scene {
 
         //this.finalScore.displayHeight = game.config.height/5;
         //this.finalScore.displayWidth = game.config.width/4;
-       
+
         if (localStorage.getItem('Best Score') === null) {
             this.bestScore.setText(0);
         } else {
@@ -92,42 +113,42 @@ class GameOver extends Phaser.Scene {
         //     this.bestScore.setText(localStorage.getItem('Best Score'));
         // }
 
-        if(gameOptions.col == 4 &&  gameOptions.raw == 3 && score >= localStorage.getItem('tinyScore')){
+        if (gameOptions.col == 4 && gameOptions.raw == 3 && score >= localStorage.getItem('tinyScore')) {
             localStorage.setItem('tinyScore', score);
             if (localStorage.getItem('tinyScore') === null) {
                 this.bestScore.setText(0);
             } else {
                 this.bestScore.setText(localStorage.getItem('tinyScore'));
-            }           
-        }else if (gameOptions.col == 4 &&  gameOptions.raw == 4 && score >= localStorage.getItem('smallScore')){
+            }
+        } else if (gameOptions.col == 4 && gameOptions.raw == 4 && score >= localStorage.getItem('smallScore')) {
             localStorage.setItem('smallScore', score);
             if (localStorage.getItem('smallScore') === null) {
                 this.bestScore.setText(0);
             } else {
                 this.bestScore.setText(localStorage.getItem('smallScore'));
             }
-        } else if (gameOptions.col == 5 &&  gameOptions.raw == 4 && score >= localStorage.getItem('mediumScore')){
+        } else if (gameOptions.col == 5 && gameOptions.raw == 4 && score >= localStorage.getItem('mediumScore')) {
             localStorage.setItem('mediumScore', score);
             if (localStorage.getItem('mediumScore') === null) {
                 this.bestScore.setText(0);
             } else {
                 this.bestScore.setText(localStorage.getItem('mediumScore'));
             }
-        }else if (gameOptions.col == 6 &&  gameOptions.raw == 4 && score >= localStorage.getItem('medium2Score')){
+        } else if (gameOptions.col == 6 && gameOptions.raw == 4 && score >= localStorage.getItem('medium2Score')) {
             localStorage.setItem('medium2Score', score);
             if (localStorage.getItem('medium2Score') === null) {
                 this.bestScore.setText(0);
             } else {
                 this.bestScore.setText(localStorage.getItem('medium2Score'));
             }
-        }else if (gameOptions.col == 7 &&  gameOptions.raw == 4 && score >= localStorage.getItem('largeScore')){
+        } else if (gameOptions.col == 7 && gameOptions.raw == 4 && score >= localStorage.getItem('largeScore')) {
             localStorage.setItem('largeScore', score);
             if (localStorage.getItem('largeScore') === null) {
                 this.bestScore.setText(0);
             } else {
                 this.bestScore.setText(localStorage.getItem('largeScore'));
             }
-        }else if (gameOptions.col == 8 &&  gameOptions.raw == 4 && score >= localStorage.getItem('hugeScore')){
+        } else if (gameOptions.col == 8 && gameOptions.raw == 4 && score >= localStorage.getItem('hugeScore')) {
             localStorage.setItem('hugeScore', score);
             if (localStorage.getItem('hugeScore') === null) {
                 this.bestScore.setText(0);
@@ -279,7 +300,7 @@ class GameOver extends Phaser.Scene {
                 this.scene.transition({
                     target: 'SetGrid',
                     moveAbove: true,
-                    duration: 100,
+                    duration: 300,
                 })
                 break;
             case "Menu":
@@ -288,7 +309,7 @@ class GameOver extends Phaser.Scene {
                 this.scene.transition({
                     target: 'SetGrid',
                     moveAbove: true,
-                    duration: 100,
+                    duration: 300,
                 })
                 break;
             case "Exit":

@@ -35,24 +35,29 @@ class Preloader extends Phaser.Scene {
 
   }
 
+  transitionOut(progress) {
+    // this.cameras.main.x = -(600 * progress);
+    this.cameras.main.zoomTo(0.05, 300);
+  }
 
   gotoNextScreen() {
     var isFirst = localStorage.getItem('isFirstTime')
     //console.log("is first"+ isFirst);
-    // if (isFirst == null) {
-    //   // this.scene.start('IntroductionScene');
-    //   this.scene.transition({
-    //     target: 'IntroductionScene',
-    //     moveAbove: true,
-    //     duration: 100,
-    //   })
-    // } else
-     {
+    if (isFirst == null) {
+      // this.scene.start('IntroductionScene');
+      this.scene.transition({
+        target: 'IntroductionScene',
+        moveAbove: true,
+        duration: 300,
+        onUpdate: this.transitionOut,
+        data: { x: 400, y: 300 }
+      })
+    } else {
       // this.scene.start('Menu');
       this.scene.transition({
         target: 'Menu',
         moveAbove: true,
-        duration: 100,
+        duration: 300,
       })
     }
   }

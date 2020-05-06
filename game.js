@@ -92,7 +92,7 @@ window.onload = function () {
         height: 640,
 
         // background color (black)
-        // backgroundColor: 0x60256B,
+        backgroundColor: 0x1646be,
 
         // scene to play
         // scene: playGame,
@@ -113,7 +113,7 @@ window.onload = function () {
         },
         url: '',
         pixelArt: true,
-        scene: [Boot, Preloader, SetGrid, Score, , Menu, Play, About, GameOver, HelpScene]
+        scene: [Boot, Preloader, SetGrid, Score, , Menu, Play, About, GameOver, HelpScene, IntroductionScene]
     }
 
     // game creation

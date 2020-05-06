@@ -42,18 +42,39 @@ class SetGrid extends Phaser.Scene {
     // method to be executed once, when the scene has been created
     create() {
 
+        //
+        this.events.on('transitionstart', function (fromScene, duration) {
+            this.cameras.main.setZoom(0.001);
+        }, this);
+
+        this.events.on('transitioncomplete', function (fromScene, duration) {
+            // this.cameras.main.zoomTo(1, 300);
+            this.cameras.main.zoomTo(1, 300);
+        }, this);
+
+        // this.events.on('transitioncomplete', function (fromScene) {
+
+        // });
+
+        this.events.on('transitionout', function (toScene, duration) {
+
+            this.cameras.main.zoomTo(0.05, 300);
+
+        }, this);
+        //
+
         //kaiads
-        // getKaiAd({
-        //     publisher: 'ca24f2d0-de89-4c1a-80c4-51e14d317000',
-        //     app: 'Pelota',
-        //     slot: 'Pelota',
-        //     onerror: err => console.error('Custom catch:', err),
-        //     onready: ad => {
-        //         // Ad is ready to be displayed
-        //         // calling 'display' will display the ad
-        //         ad.call('display')
-        //     }
-        // })
+        getKaiAd({
+            publisher: 'ca24f2d0-de89-4c1a-80c4-51e14d317000',
+            app: 'Pelota',
+            slot: 'Pelota',
+            onerror: err => console.error('Custom catch:', err),
+            onready: ad => {
+                // Ad is ready to be displayed
+                // calling 'display' will display the ad
+                ad.call('display')
+            }
+        })
 
         this.image = this.add.image(game.config.width / 2, game.config.height / 2, 'bgMenus');
         this.image.displayHeight = game.config.height;
@@ -82,7 +103,7 @@ class SetGrid extends Phaser.Scene {
                 this.scene.transition({
                     target: 'Menu',
                     moveAbove: true,
-                    duration: 50,
+                    duration: 300,
                 })
                 // this.scene.start('Menu');
             }
@@ -138,7 +159,7 @@ class SetGrid extends Phaser.Scene {
         this.scene.transition({
             target: 'Play',
             moveAbove: true,
-            duration: 200,
+            duration: 300,
         })
     }
 
@@ -330,7 +351,7 @@ class SetGrid extends Phaser.Scene {
                 this.scene.transition({
                     target: 'Play',
                     moveAbove: true,
-                    duration: 200,
+                    duration: 300,
                 })
                 break;
             case "small":
@@ -342,7 +363,7 @@ class SetGrid extends Phaser.Scene {
                 this.scene.transition({
                     target: 'Play',
                     moveAbove: true,
-                    duration: 200,
+                    duration: 300,
                 })
                 break;
             case "medium":
@@ -354,7 +375,7 @@ class SetGrid extends Phaser.Scene {
                 this.scene.transition({
                     target: 'Play',
                     moveAbove: true,
-                    duration: 200,
+                    duration: 300,
                 })
                 break;
             case "medium2":
@@ -366,7 +387,7 @@ class SetGrid extends Phaser.Scene {
                 this.scene.transition({
                     target: 'Play',
                     moveAbove: true,
-                    duration: 200,
+                    duration: 300,
                 })
                 break;
             case "large":
@@ -378,7 +399,7 @@ class SetGrid extends Phaser.Scene {
                 this.scene.transition({
                     target: 'Play',
                     moveAbove: true,
-                    duration: 200,
+                    duration: 300,
                 })
                 break;
             case "huge":
@@ -390,7 +411,7 @@ class SetGrid extends Phaser.Scene {
                 this.scene.transition({
                     target: 'Play',
                     moveAbove: true,
-                    duration: 200,
+                    duration: 300,
                 })
                 break;
             default:

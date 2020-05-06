@@ -1,5 +1,5 @@
 {
-  "version": "1.0.1",
+  "version": "1.0.2",
   "name": "Memory Master",
   "launch_path": "/index.html",
   "description": "Memory Master is a memory game where you need to match pairs of tiles. Playing is very simple - you turn over one tile and then try to find a matching tile. There are many levels from easier to harder !",

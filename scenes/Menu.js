@@ -41,6 +41,27 @@ class Menu extends Phaser.Scene {
 
     create() {
 
+        //
+        this.events.on('transitionstart', function (fromScene, duration) {
+            this.cameras.main.setZoom(0.001);
+        }, this);
+
+        this.events.on('transitioncomplete', function (fromScene, duration) {
+            // this.cameras.main.zoomTo(1, 300);
+            this.cameras.main.zoomTo(1, 300);
+        }, this);
+
+        // this.events.on('transitioncomplete', function (fromScene) {
+
+        // });
+
+        this.events.on('transitionout', function (toScene, duration) {
+
+            this.cameras.main.zoomTo(0.05, 300);
+
+        }, this);
+        //
+
         this.image = this.add.image(game.config.width / 2, game.config.height / 2, 'bgMenu');
         this.image.displayHeight = game.config.height;
         this.image.displayWidth = game.config.width;
@@ -65,7 +86,7 @@ class Menu extends Phaser.Scene {
                 this.scene.transition({
                     target: 'About',
                     moveAbove: true,
-                    duration: 100,
+                    duration: 300,
                 })
             }
         }, this);
@@ -170,7 +191,7 @@ class Menu extends Phaser.Scene {
         this.scene.transition({
             target: 'About',
             moveAbove: true,
-            duration: 100,
+            duration: 300,
         })
     }
 
@@ -311,7 +332,7 @@ class Menu extends Phaser.Scene {
                 this.scene.transition({
                     target: 'SetGrid',
                     moveAbove: true,
-                    duration: 200,
+                    duration: 300,
                 })
                 break;
             case "ScoreScene":
@@ -320,7 +341,7 @@ class Menu extends Phaser.Scene {
                 this.scene.transition({
                     target: 'Score',
                     moveAbove: true,
-                    duration: 200,
+                    duration: 300,
                 })
                 break;
             case "Help":
@@ -329,7 +350,7 @@ class Menu extends Phaser.Scene {
                 this.scene.transition({
                     target: 'HelpScene',
                     moveAbove: true,
-                    duration: 200,
+                    duration: 300,
                 })
                 break;
             // case "Exit":
