@@ -356,10 +356,12 @@ class Play extends Phaser.Scene {
     }
 
     scoreCollect() {
-        score += 10;
-        this.avgScore = (score / this.move).toFixed(0);
-        this.scoreText.setText(this.avgScore * 10);
-        score = this.avgScore * 10;
+        // score += 10;
+        this.avgScore = (100 / this.move).toFixed(0);     
+        var avg = parseInt(this.avgScore, 10)
+        console.log(typeof(avg))  
+        this.scoreText.setText(avg + score);
+        score = avg + score;
     }
 
     _setScoreLocalStorage(avgScore) {
