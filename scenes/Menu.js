@@ -157,6 +157,8 @@ class Menu extends Phaser.Scene {
         //     console.log(event.code);
         // });
 
+        this.about.setInteractive().on('pointerdown', this.goToContactScene, this);
+
     }
 
 

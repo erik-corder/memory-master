@@ -204,7 +204,8 @@ class GameOver extends Phaser.Scene {
         this.btn_exit.displayHeight = game.config.height / 8.9;
         this.btn_exit.displayWidth = game.config.width / 2.8;
 
-
+        //touchable implementation
+        this.btn_restart.setInteractive().on('pointerdown', this.callMenuButton, this);
 
         // create mouse input
         // this.createMouseInput();

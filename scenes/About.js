@@ -51,6 +51,16 @@ class About extends Phaser.Scene {
         })
       }
     }, this);
+
+    // touchable implementation
+    this.about.setInteractive().on('pointerdown', (pointer, localX, localY, event) => {
+      this.scene.transition({
+        target: "Menu",
+        moveAbove: true,
+        duration: 300,
+      })
+    });
+
   }
 
   update() {
